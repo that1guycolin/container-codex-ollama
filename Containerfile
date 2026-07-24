@@ -22,3 +22,10 @@ COPY --from=ollama /ollama/bin/ollama /usr/bin/ollama
 COPY --from=ollama /ollama/lib/ /usr/lib/
 RUN npm install -g @openai/codex@0.145.0
 CMD ["sh", "-c", "ollama serve & until ollama list >/dev/null 2>&1; do sleep 0.5; done; ollama launch codex --model \"$MODEL\""]
+
+LABEL \
+org.opencontainers.image.title="codex-ollama" \
+org.opencontainers.image.description="Facilitate the use of Ollama models as the backend for OpenAI's Codex CLI tool." \
+org.opencontainers.image.source="https://github.com/that1guycolin/container-codex-ollama" \
+org.opencontainers.image.licenses="MIT"
+  
